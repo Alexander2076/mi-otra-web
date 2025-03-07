@@ -71,7 +71,7 @@
     background-color: white;
     position: absolute;
     box-shadow: 0 0 10px 0 black;
-    display: flex;
+    display: none;
     gap: 15px;
     padding: 5px;
     top: 0;
@@ -82,6 +82,8 @@
     position: relative;
     font-size: 20px;
     cursor: pointer;
+    animation: aparecer 1s forwards;
+    opacity: 0;
 }
 
 .share__container i:hover{
@@ -93,15 +95,129 @@
 }
 
 
-.bi-facebook{
-    transform: translateX(200px);
+
+.share__container i:nth-child(1){
+  animation-delay: .3s;
 }
-.bi-twitter{
-    transform: translateX(400px);
+.share__container i:nth-child(2){
+    animation-delay: .5s;
 }
-.bi-google{
-    transform: translateX(600px);
+.share__container i:nth-child(3){
+    animation-delay: .7s;
 }
-.bi-instagram{
-    transform: translateX(800px);
+.share__container i:nth-child(4){
+    animation-delay: .9s;
+}
+
+
+@keyframes aparecer {
+    from{
+        opacity: 0;
+        transform: translateX(400px);
+    }
+    to{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+
+
+
+
+
+
+.header{
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+}
+
+
+
+.header__carrusel{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    transition: 1s;
+}
+
+
+.header__carrusel img{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    position: relative;
+    flex-shrink: 0;
+    
+}
+
+
+
+.botones input{
+    display: none;
+}
+
+.botones{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    padding-bottom: 20px;
+    gap: 20px;
+    z-index: 100;
+}
+
+.botones label{
+    display: inline-block;
+    width: 100px;
+    height: 5px;
+    background-color: white;
+    border-radius: 50px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+body:has(#imagen-1:checked) .header__carrusel{
+    transform: translateX(0);
+}
+body:has(#imagen-1:checked) .label-1{
+    background-color: #48e;
+}
+body:has(#imagen-2:checked) .label-2{
+    background-color: #48e;
+}
+body:has(#imagen-3:checked) .label-3{
+    background-color: #48e;
+}
+body:has(#imagen-2:checked) .header__carrusel{
+    transform: translateX(-100%);
+}
+body:has(#imagen-3:checked) .header__carrusel{
+    transform: translateX(-200%);
+}
+
+
+.botones label::after{
+    content: "";
+    width: 200px;
+    height: 5px;
+    border-radius: 50px;
+    background-color: #48e;
+    position: absolute;
+    transform: translateX(-200px);
+    transition: 1s ease-in-out;
+}
+
+
+.botones label:hover::after{
+    transform: translateX(0);
 }
